@@ -20,13 +20,13 @@ ______________________________________________________________________
                     ";
 
             }
-          
-            int saldo = ProgramConsts.InitialAmount;
+            Program program = new Program();
+            int saldo = 5000;
             int operationSelected;
 
             do
             {
-                Console.WriteLine(ProgramConsts.MenuString);
+                program.menu();
                 int operation = Convert.ToInt32(Console.ReadLine());
                 switch (operation)
                 {
