@@ -2,11 +2,10 @@
 
 namespace Calculator
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
             Console.WriteLine("Enter the operation (example: 5 - 2)");
 
             string[] num = Console.ReadLine().Split(' ');

@@ -2,25 +2,21 @@
 
 namespace CajeroAutomatico
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
             string buildTitle(string title)
             {
-
                 return @$"
 ______________________________________________________________________
-                 
-                {title}  
-______________________________________________________________________ 
-                 
-                
-                    ";
 
+                {title}
+______________________________________________________________________
+
+                    ";
             }
-         
+
             int saldo = ProgramConsts.InitialAmount;
             int operationSelected;
 
@@ -35,7 +31,6 @@ ______________________________________________________________________
                             Console.WriteLine(buildTitle("INGRESE EL MONTO QUE DESEA DEPOSITAR"));
                             saldo = saldo + Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("         TU MONTO DE DINERO SE HA GUARDADO CORRECTAMENTE");
-
                         }
                         break;
 
@@ -46,6 +41,7 @@ ______________________________________________________________________
                             Console.WriteLine("");
                         }
                         break;
+
                     case 3:
                         {
                             Console.WriteLine(buildTitle("INGRESE EL MONTO QUE DESEA RETIRAR"));
@@ -56,6 +52,7 @@ ______________________________________________________________________
                             Console.WriteLine("");
                         }
                         break;
+
                     case 4:
                         {
                             //Mensaje de agradecimiento al final
@@ -67,10 +64,7 @@ ______________________________________________________________________
                 }
                 Console.ReadKey();
                 operationSelected = operation;
-
             } while (operationSelected != 4);
-
         }
-
     }
 }
