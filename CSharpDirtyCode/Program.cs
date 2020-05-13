@@ -58,7 +58,7 @@
                     var limiteContador = Console.ReadLine();
                     var parseResult = TryParseInt(limiteContador);
 
-                    if(parseResult.Result)
+                    if (parseResult.Result)
                     {
                         for (int i = 1; i <= parseResult.Number; i++)
                         {
@@ -66,7 +66,7 @@
                             i++;
                         }
                     }
-                    
+
                 }
                 else if (menu == Menu.Vector)
                 {
