@@ -1,25 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace CSharpDirtyCode
+﻿namespace CSharpDirtyCode
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     class Program
     {
         static void Main(string[] args)
         {
+
+            (bool Result, int Number) TryParseInt(string value)
+            {
+                bool result = int.TryParse(value, out int valueResult);
+
+                return (result, valueResult);
+            }
+
+
             const string saludo = "Bienvenido a mi aplicación";
             var año = DateTime.Now.Year;
             double numeroPi = 3.14;
-            int[] vectorEnteros = { 1, 2, 3, 4, 5 }; //new int[5];
-            vectorEnteros[0] = new Random().Next(100);
-            vectorEnteros[1] = new Random().Next(100);
-            vectorEnteros[2] = new Random().Next(100);
-            vectorEnteros[3] = new Random().Next(100);
-            vectorEnteros[4] = new Random().Next(100);
+            int[] vectorEnteros = new int[5];
+            vectorEnteros = vectorEnteros.ToList().Select(p => new Random().Next(100)).ToArray();
 
             Console.WriteLine(saludo);
 
-            while (1 > 0)
+            while (true)
             {
                 Console.WriteLine("1=Mostrar año actual, 2=Valor del número pi, 3=Contador, 4=Vector, 5=Diccionario");
                 var numeroSeleccionado = Console.ReadLine();
@@ -35,7 +41,7 @@ namespace CSharpDirtyCode
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Excepción:" + ex.Message);
+                    Console.WriteLine($"Excepción:{ex.Message}");
                 }
 
                 if (menu == Menu.Año)
@@ -50,20 +56,23 @@ namespace CSharpDirtyCode
                 {
                     Console.WriteLine("Ingrese el limite del contador");
                     var limiteContador = Console.ReadLine();
-                    int intLimiteContador = 0;
-                    int.TryParse(limiteContador, out intLimiteContador);
+                    var parseResult = TryParseInt(limiteContador);
 
-                    for (int i = 1; i <= intLimiteContador; i++)
+                    if (parseResult.Result)
                     {
-                        Console.WriteLine(i);
-                        i++;
+                        for (int i = 1; i <= parseResult.Number; i++)
+                        {
+                            Console.WriteLine(i);
+                            i++;
+                        }
                     }
+
                 }
                 else if (menu == Menu.Vector)
                 {
-                    for (var i = 0; i < vectorEnteros.Length; i++)
+                    foreach (var item in vectorEnteros)
                     {
-                        Console.WriteLine(vectorEnteros[i]);
+                        Console.WriteLine(item);
                     }
                 }
                 else if (menu == Menu.Diccionario)
@@ -72,6 +81,8 @@ namespace CSharpDirtyCode
                     string numeroIngresado = "";
                     Dictionary<int, int> diccionario = new Dictionary<int, int>();
                     int keyValue = 1;
+
+                    //Se ingresan los valores del diccionario hasta que el usuario ingrese el caracter punto(.)
                     while (!numeroIngresado.Equals("."))
                     {
                         numeroIngresado = Console.ReadLine();
@@ -90,7 +101,7 @@ namespace CSharpDirtyCode
 
                     foreach (var item in diccionario)
                     {
-                        Console.WriteLine("Clave:" + item.Key + " - Valor:" + item.Value);
+                        Console.WriteLine($"Clave: {item.Key} - Valor:{item.Value}");
                     }
                 }
                 else
