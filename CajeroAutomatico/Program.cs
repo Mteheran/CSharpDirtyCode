@@ -6,12 +6,10 @@ namespace CajeroAutomatico
     {
         static void Main(string[] args)
         {
-            int a = 0;
             Program program = new Program();
 
-            int deposito;
             int saldo = 5000;
-            int retiro; // variable para guardar retiro de dinero
+            int a;
 
             do
             {
@@ -27,7 +25,7 @@ namespace CajeroAutomatico
                             Console.WriteLine("             INGRESE EL MONTO QUE DECEA DEPOSITAR  ");
                             Console.WriteLine("______________________________________________________________________");
                             Console.WriteLine("");
-                            deposito = Convert.ToInt32(Console.ReadLine());
+                            int deposito = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("");
                             saldo = saldo + deposito;
                             Console.WriteLine("         TU MONTO DE DINERO SE AH GUARDADO CORRECTAMENTE");
@@ -58,7 +56,7 @@ namespace CajeroAutomatico
                             Console.WriteLine("________________________________________________________________________");
                             Console.WriteLine("");
                             Console.WriteLine("");
-                            retiro = Convert.ToInt32(Console.ReadLine());
+                            int retiro = Convert.ToInt32(Console.ReadLine());
                             saldo = saldo - retiro;
                             Console.WriteLine("");
                             Console.WriteLine("     TU RETIRO DE {0} SE REALIZO CORRECTAMENTE ", retiro);
