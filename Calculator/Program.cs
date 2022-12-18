@@ -6,6 +6,41 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
+            int resultOperation = 0;
+
+            while (resultOperation < 1)
+            {
+                resultOperation = NewImplementation();
+            }
+        }
+
+        private static int NewImplementation() {
+            string inputMessage = "Type a Two numbers operation. Example: (5 - 3)";
+            string[] num = new string[0];
+            int result;
+
+            while (num.Length != 3)
+            {
+                Console.WriteLine(inputMessage);
+                num = Console.ReadLine().Trim().Split(' ');
+            }
+
+            if (!(int.TryParse(num[0], out int number_1) && int.TryParse(num[2], out int number_2))) return - 1;
+
+            result = num[1] switch
+            {
+                "+" => number_1 + number_2,
+                "-" => number_1 - number_2,
+                "*" => number_1 * number_2,
+                _ when (num[1] == "/" || num[1] == "\\") && number_2 != 0 => number_1 / number_2,
+                _ => -1
+            };
+
+            Console.WriteLine(result == -1 ? "Invalid Operation" : $"Result operation is:{result}");
+            return result;
+        }
+
+        private static void OldImplementation() {
             double a, b, x;
             Console.WriteLine("Enter Things");
         Label:
