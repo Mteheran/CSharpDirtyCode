@@ -28,7 +28,7 @@ public class Atm
             Console.WriteLine(AtmConstants.Menu);
             string value = Console.ReadLine();
             bool valid = int.TryParse(value, out int optionSelected);
-            option = (TypeTransaction)optionSelected;
+            option = Enum.Parse<TypeTransaction>(optionSelected);
 
             if (valid && _transactions.Keys.Contains(option))
             {
